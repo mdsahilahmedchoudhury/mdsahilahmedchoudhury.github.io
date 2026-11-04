@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page not found — Md Sahil Ahmed Choudhury</title>
+    <meta name="robots" content="noindex">
+    <meta name="color-scheme" content="light">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="/assets/fonts/newsreader-roman.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script>
+      (function () {
+        var t;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <style>
+      .nf { min-height: 100vh; display: grid; align-content: center; padding-block: 4rem; }
+      .nf__code { font-family: var(--font-mono); font-size: .8125rem; letter-spacing: .08em; color: var(--accent); }
+      .nf__title { margin-top: 1rem; font-family: var(--font-serif); font-weight: 380; font-size: clamp(2.75rem, 1.5rem + 6vw, 6rem); line-height: .98; letter-spacing: -.03em; }
+      .nf__text { margin-top: 1.5rem; max-width: 46ch; color: var(--ink-soft); }
+      .nf__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+      .nf__rule { height: 1px; margin-top: 2.5rem; background: var(--rule-strong); }
+    </style>
+  </head>
+  <body>
+    <main class="container nf">
+      <p class="nf__code">§ 404</p>
+      <h1 class="nf__title">No such <em>section</em>.</h1>
+      <div class="nf__rule" aria-hidden="true"></div>
+      <p class="nf__text">The page you were looking for isn’t here — the link may be mistyped, or the page may have moved.</p>
+      <div class="nf__actions">
+        <a class="btn btn--primary" href="/">Return to the portfolio</a>
+        <a class="btn btn--outline" href="/#contact">Contact</a>
+      </div>
+    </main>
+  </body>
+</html>
