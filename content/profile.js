@@ -64,7 +64,7 @@ export default {
       { label: 'Programme', value: 'B.A. (Policy Science) LL.B. (Hons.)' },
       { label: 'University', value: 'National Law University of Meghalaya' },
       { label: 'Batch', value: '2025 – 2030 · Second year' },
-      { label: 'CGPA', value: '8.48 / 10 (End of Trimester III)' },
+      { label: 'CGPA', value: '8.5 / 10' },
       { label: 'Currently', value: 'Research Assistant, IIT Guwahati (CLST)' },
     ],
   },
@@ -227,12 +227,22 @@ export default {
       endYear: 2030,
       // Which year of the programme you are in (used for the programme timeline).
       currentYear: 2,
-      grade: 'CGPA 8.48 / 10',
-      gradeNote: 'End of Trimester III',
+      grade: 'CGPA 8.5 / 10',
+      // Optional small note under the CGPA, e.g. 'End of Trimester IV'. Leave '' for none.
+      gradeNote: '',
     },
   ],
 
+  /**
+   * MOOTS & ACHIEVEMENTS — `kind` sets the icon: 'Moot court', 'Moot court research' or 'Competition'.
+   */
   achievements: [
+    {
+      title: 'Researcher',
+      event: 'The NUALS Moot, Third Edition (2026) — International Taxation',
+      host: 'The National University of Advanced Legal Studies (NUALS), Kochi',
+      kind: 'Moot court research',
+    },
     {
       title: 'Semi-finalists',
       event: '2nd Intra Moot Court Competition',

@@ -123,7 +123,7 @@ function renderContents(data) {
     experience: plural(data.experience.length, 'internship', 'internships'),
     research: ongoing ? 'Ongoing' : plural(data.research.length, 'project', 'projects'),
     publications: plural(data.publications.length, 'publication', 'publications'),
-    education: 'Degree & honours',
+    education: 'Degree & achievements',
     contact: 'Write to me',
   };
   return html`
@@ -228,7 +228,7 @@ function renderAbout(data) {
 function renderExperience(data) {
   const items = data.experience;
   return html`
-    <section class="section" id="experience" aria-labelledby="experience-title">
+    <section class="section section--alt" id="experience" aria-labelledby="experience-title">
       <div class="container section__grid">
         <span class="section__rule" aria-hidden="true" data-reveal></span>
         ${sectionHead('experience', 'Experience', 'Practice, research & reporting')}
@@ -425,12 +425,14 @@ function renderProgramme(e) {
 }
 
 function renderEducation(data) {
-  const kindIcon = (k = '') => (/moot/i.test(k) ? 'award' : 'medal');
+  const kindIcon = (k = '') => (/research/i.test(k) ? 'scroll-text' : /moot/i.test(k) ? 'award' : 'medal');
+  const n = data.achievements.length;
+  const honourCols = n === 1 ? 1 : n % 3 === 0 ? 3 : 2;
   return html`
     <section class="section section--alt" id="education" aria-labelledby="education-title">
       <div class="container section__grid">
         <span class="section__rule" aria-hidden="true" data-reveal></span>
-        ${sectionHead('education', 'Education', 'Degree, honours & skills')}
+        ${sectionHead('education', 'Education', 'Degree, achievements & skills')}
         <div class="section__body">
           ${data.education.map((e) => {
             const [whole, frac] = String(e.grade).match(/[\d.]+/)?.[0].split('.') || [];
@@ -452,8 +454,8 @@ function renderEducation(data) {
           })}
 
           <div class="subsection" data-reveal>
-            <h3 class="subsection__title"><span class="label">Honours</span></h3>
-            <ul class="honours">
+            <h3 class="subsection__title"><span class="label">Moots &amp; achievements</span></h3>
+            <ul class="honours" style="--cols:${honourCols}">
               ${data.achievements.map(
                 (a, i) => html`
                   <li class="honour" style="--i:${i}">
@@ -477,7 +479,7 @@ function renderEducation(data) {
                       ${g.items.map((s) => {
                         const ref = s.ref && data.experience.find((x) => x.id === s.ref);
                         return ref
-                          ? html`<li><a class="chip chip--link" href="#xp-${ref.id}" data-xp-open="${ref.id}" data-tip="Applied at ${ref.organisation}">${s.name}${icon('arrow-up-right', { size: 14 })}<span class="sr-only"> — see experience at ${ref.organisation}</span></a></li>`
+                          ? html`<li><a class="chip chip--link" href="#xp-${ref.id}" data-xp-open="${ref.id}" title="Applied at ${ref.organisation}">${s.name}${icon('arrow-up-right', { size: 14 })}<span class="sr-only"> — see experience at ${ref.organisation}</span></a></li>`
                           : html`<li><span class="chip">${s.name}</span></li>`;
                       })}
                     </ul>

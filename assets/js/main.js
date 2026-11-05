@@ -57,6 +57,7 @@ function initScroll() {
   const header = $('[data-header]');
   const bar = $('[data-progress]');
   const toTop = $('[data-to-top]');
+  const footer = $('.site-footer');
   const indicator = $('[data-nav-indicator]');
   const list = $('[data-nav-list]');
   const links = $$('a[data-nav]');
@@ -93,7 +94,10 @@ function initScroll() {
     const progress = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
     if (bar) bar.style.transform = `scaleX(${progress})`;
     header?.classList.toggle('is-scrolled', y > 8);
-    toTop?.classList.toggle('is-visible', y > window.innerHeight * 0.9);
+    // Show back-to-top once the visitor has scrolled; hide it again when the footer
+    // (which has its own "Back to top" link) comes into view, so it never covers text.
+    const footerInView = footer ? footer.getBoundingClientRect().top < window.innerHeight - 40 : false;
+    toTop?.classList.toggle('is-visible', y > window.innerHeight * 0.9 && !footerInView);
 
     // The active section is the last one whose top has passed 35% of the viewport.
     const line = window.innerHeight * 0.35;

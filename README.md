@@ -71,7 +71,7 @@ scripts/                  ← build, validation and local server (no dependencie
 * **Build:** `scripts/build.mjs` pre-renders every section into `index.html`, so the published page is complete HTML. It is fast to display, readable by search engines, and works without JavaScript. The repository root also works as a site by itself, rendering in the browser.
 * **Deployment:** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) validates and builds on every push. Pushes to the default branch are published with GitHub's official Pages actions.
 * **Contact form:** GitHub Pages is static hosting with no server, so the form builds a `mailto:` link. The visitor's own email app opens with the recipient, subject and message filled in, and the visitor sends it. Nothing is stored or sent by the website.
-* **Theme:** the site opens in its cream theme. The moon/sun button offers an optional dark reading mode, which is remembered for that visitor.
+* **Theme:** the site opens in its light ivory, navy and brass theme. The moon/sun button offers an optional dark reading mode, which is remembered for that visitor.
 
 ### Features
 
