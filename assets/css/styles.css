@@ -1,7 +1,7 @@
 /* ==========================================================================
    Md Sahil Ahmed Choudhury — portfolio stylesheet
    Editorial system: Newsreader (display/serif) · Instrument Sans (text)
-   · IBM Plex Mono (labels). Palette: ivory, navy, brass, mist blue, sage.
+   · IBM Plex Mono (labels). Palette: navy and steel blue on soft cool white.
    ========================================================================== */
 
 /* ── fonts (self-hosted, Latin subset) ──────────────────────────────────── */
@@ -35,36 +35,34 @@
 }
 
 /* ── tokens ─────────────────────────────────────────────────────────────── */
-/* Palette: ivory paper, navy ink, brass accent, mist-blue and navy bands, sage for status. */
+/* Palette: one calm navy & steel-blue family on a soft cool white that deepens
+   very gradually down the page — no hard-edged colour bands while scrolling. */
 :root {
   color-scheme: light;
-  --paper: #f8f5ef;
-  --paper-alt: #eaeef3;
-  --surface: #fffdf9;
-  --ink: #15233d;
-  --ink-soft: #465169;
-  --ink-muted: #5c6577;
-  --rule: #d7dbe1;
-  --rule-strong: #15233d;
-  --accent: #806027;
-  --accent-hover: #6a4f1f;
-  --accent-wash: rgba(176, 141, 87, 0.13);
+  --paper: #f6f8fb;
+  --paper-end: #e8edf4;
+  --paper-alt: #eef2f7;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --ink-soft: #445066;
+  --ink-muted: #5a6577;
+  --rule: #d9e0ea;
+  --rule-strong: #14213d;
+  --accent: #2f5d9e;
+  --accent-hover: #244a80;
+  --accent-wash: rgba(47, 93, 158, 0.08);
+  --accent-2: #5b86c2;
   --on-accent: #ffffff;
-  --brass: #b08d57;
-  --sage: #3f7458;
-  --danger: #b23a2a;
-  --band-bg: #172a49;
-  --band-ink: #f3eee4;
-  --band-soft: #c8d0dd;
-  --band-muted: #a3aec0;
-  --band-rule: rgba(243, 238, 228, 0.16);
-  --band-accent: #d9b97e;
-  --band-sage: #8cc2a3;
-  --footer-bg: #111c31;
-  --shadow-sm: 0 1px 2px rgba(21, 35, 61, 0.06);
-  --shadow-md: 0 1px 2px rgba(21, 35, 61, 0.05), 0 14px 34px -18px rgba(21, 35, 61, 0.32);
-  --grain-opacity: 0.035;
-  --grain-blend: multiply;
+  --live: #2b7363;
+  --danger: #b42318;
+  --band-ink: #eef2f8;
+  --band-soft: #c5cfdd;
+  --band-muted: #9eabbe;
+  --band-rule: rgba(238, 242, 248, 0.14);
+  --band-accent: #9dbbe3;
+  --footer-bg: #13203a;
+  --shadow-sm: 0 1px 2px rgba(20, 33, 61, 0.05);
+  --shadow-md: 0 1px 2px rgba(20, 33, 61, 0.04), 0 16px 36px -20px rgba(20, 33, 61, 0.28);
 
   --font-serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -82,27 +80,25 @@
 /* Optional dark reading mode (only when a visitor chooses it). */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --paper: #0e1525;
-  --paper-alt: #121b2e;
-  --surface: #17213a;
-  --ink: #ece6da;
-  --ink-soft: #c3c9d4;
-  --ink-muted: #959eae;
-  --rule: #263149;
-  --rule-strong: #ece6da;
-  --accent: #d4b57c;
-  --accent-hover: #e3c893;
-  --accent-wash: rgba(212, 181, 124, 0.12);
-  --on-accent: #14100a;
-  --brass: #c9a86b;
-  --sage: #7db596;
+  --paper: #0f1729;
+  --paper-end: #0b111f;
+  --paper-alt: #111a2d;
+  --surface: #152038;
+  --ink: #e8edf5;
+  --ink-soft: #c0c9d6;
+  --ink-muted: #8f9bb0;
+  --rule: #23304a;
+  --rule-strong: #e8edf5;
+  --accent: #8fb4e6;
+  --accent-hover: #a9c6ee;
+  --accent-wash: rgba(143, 180, 230, 0.12);
+  --accent-2: #6f9ad6;
+  --on-accent: #0d1424;
+  --live: #6cc3a8;
   --danger: #f09a8c;
-  --band-bg: #142039;
-  --footer-bg: #0a101d;
+  --footer-bg: #080d18;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -16px rgba(0, 0, 0, 0.6);
-  --grain-opacity: 0.05;
-  --grain-blend: screen;
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 36px -20px rgba(0, 0, 0, 0.6);
 }
 
 /* ── reset & base ───────────────────────────────────────────────────────── */
@@ -120,7 +116,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: linear-gradient(180deg, var(--paper) 0%, var(--paper-alt) 45%, var(--paper-end) 100%);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -130,17 +127,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-}
-/* Subtle paper grain — a static, fixed texture (no repaint on scroll). */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: var(--grain-opacity);
-  mix-blend-mode: var(--grain-blend);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .theme-transition,
 .theme-transition *,
@@ -436,7 +422,7 @@ main:focus {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--brass);
+  background: var(--accent-2);
 }
 .tag:hover {
   border-color: var(--ink);
@@ -507,14 +493,14 @@ main:focus {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--live);
 }
 .status__dot::after {
   content: '';
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 1px solid var(--sage);
+  border: 1px solid var(--live);
   animation: pulse 2.4s var(--ease) infinite;
 }
 .status--done .status__dot {
@@ -624,7 +610,7 @@ main:focus {
   bottom: -0.15rem;
   height: 1px;
   width: var(--w, 0);
-  background: var(--brass);
+  background: var(--accent-2);
   transform: translateX(var(--x, 0));
   opacity: 0;
   transition: transform 0.45s var(--ease), width 0.45s var(--ease), opacity 0.3s;
@@ -668,7 +654,7 @@ main:focus {
 .progress__bar {
   display: block;
   height: 100%;
-  background: var(--brass);
+  background: var(--accent-2);
   transform: scaleX(0);
   transform-origin: 0 50%;
 }
@@ -774,7 +760,7 @@ main:focus {
 /* ── hero ───────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  background: radial-gradient(52rem 28rem at 94% 0%, rgba(176, 141, 87, 0.15), transparent 70%);
+  background: radial-gradient(52rem 28rem at 94% 0%, rgba(47, 93, 158, 0.09), transparent 70%);
   padding-top: clamp(2rem, 5vw, 4rem);
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
@@ -959,10 +945,7 @@ main:focus {
   position: relative;
   padding-block: clamp(4.5rem, 9vw, 8rem);
 }
-.section--alt {
-  --section-bg: var(--paper-alt);
-  background: var(--paper-alt);
-}
+
 .section__grid {
   position: relative;
   display: grid;
@@ -1197,13 +1180,13 @@ main:focus {
   margin-left: calc(var(--node) / -2 + 0.5px);
   border: 1px solid var(--ink);
   border-radius: 50%;
-  background: var(--section-bg, var(--paper));
+  background: var(--surface);
   transition: background-color 0.35s var(--ease), border-color 0.35s, transform 0.35s var(--ease);
 }
 .xp.is-open .xp__node::after,
 .xp:hover .xp__node::after {
-  background: var(--brass);
-  border-color: var(--brass);
+  background: var(--accent-2);
+  border-color: var(--accent-2);
   transform: scale(1.15);
 }
 .xp__trigger {
@@ -1352,26 +1335,18 @@ main:focus {
 }
 
 /* ── research band ──────────────────────────────────────────────────────── */
-.section--band {
-  --ink: var(--band-ink);
-  --ink-soft: var(--band-soft);
-  --ink-muted: var(--band-muted);
-  --rule: var(--band-rule);
-  --rule-strong: var(--band-ink);
-  --accent: var(--band-accent);
-  --accent-wash: rgba(217, 185, 126, 0.14);
-  --brass: var(--band-accent);
-  --sage: var(--band-sage);
-  --surface: rgba(255, 255, 255, 0.04);
-  --on-accent: #14100a;
-  background: var(--band-bg);
-  color: var(--ink);
-}
 .project {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
+}
+.project--feature {
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: var(--shadow-md);
 }
 .project + .project {
   margin-top: 3rem;
@@ -1424,7 +1399,7 @@ main:focus {
   overflow: visible;
 }
 .headnote-figure .pg {
-  fill: var(--surface);
+  fill: var(--paper-alt);
   stroke: var(--rule);
 }
 .headnote-figure .tx {
@@ -1438,7 +1413,7 @@ main:focus {
 }
 .headnote-figure .ln {
   fill: var(--ink);
-  opacity: 0.16;
+  opacity: 0.18;
   transform-box: fill-box;
   transform-origin: 0 50%;
 }
@@ -2263,7 +2238,7 @@ main:focus {
   color: var(--band-accent);
 }
 :root[data-theme='dark'] .toast .icon {
-  color: #806027;
+  color: var(--accent);
 }
 
 /* ── no-JS notice (removed from the pre-rendered build) ─────────────────── */

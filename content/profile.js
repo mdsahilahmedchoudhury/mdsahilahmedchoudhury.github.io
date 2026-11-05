@@ -250,12 +250,6 @@ export default {
       kind: 'Moot court',
     },
     {
-      title: 'Quarter-finalists',
-      event: 'Intellectual Property Rights Extempore Moot Court Competition',
-      host: 'National Law University of Meghalaya',
-      kind: 'Moot court',
-    },
-    {
       title: 'First Position',
       event: 'NEP Awareness Poster-Making Competition',
       host: 'National Law University of Meghalaya',

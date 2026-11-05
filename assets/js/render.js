@@ -601,10 +601,6 @@ export function renderFooter(data) {
               <li><a class="link" href="${person.cv.file}" download="${person.cv.downloadName}">Download CV</a></li>
             </ul>
           </div>
-          <div class="colophon">
-            <p class="label">Colophon</p>
-            <p>Set in Newsreader, Instrument Sans and IBM Plex Mono. Hand-built and published on GitHub Pages.</p>
-          </div>
         </div>
         <div class="site-footer__bottom">
           <p>© <span data-year>${year}</span> ${person.name}${site.updated ? html` <span aria-hidden="true">·</span> Last updated ${site.updated}` : ''}</p>
